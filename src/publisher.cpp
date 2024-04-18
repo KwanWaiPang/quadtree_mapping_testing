@@ -158,7 +158,10 @@ void quadmap::Publisher::publishPointCloud(ros::Time msg_time)
         p.y = xyz.y;
         p.z = xyz.z;
         const uint8_t intensity = ref_img.at<uint8_t>(y, x);
-        p.intensity = intensity;
+        // p.intensity = intensity;
+        p.r = intensity;
+        p.g = intensity;
+        p.b = intensity;
         pc->push_back(p);
       }
     }
@@ -190,7 +193,7 @@ void quadmap::Publisher::publishPointCloud(ros::Time msg_time)
     if(nh_.ok())
     {
       pcl_conversions::toPCL(msg_time, pc->header.stamp);
-      pc->header.frame_id = "/world";
+      pc->header.frame_id = "world";
       pub_pc.publish(pc);
     }
   }

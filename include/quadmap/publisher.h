@@ -32,7 +32,8 @@ namespace quadmap
 class Publisher
 {
 
-  typedef pcl::PointXYZI PointType;
+  // typedef pcl::PointXYZI PointType;
+  typedef pcl::PointXYZRGB PointType;
   typedef pcl::PointCloud<PointType> PointCloud;
 
 public:
